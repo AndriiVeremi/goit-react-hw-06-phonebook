@@ -12,8 +12,6 @@ function App() {
     return JSON.parse(window.localStorage.getItem('contacts')) ?? '';
   });
 
-  const [filter, setFilter] = useState('');
-
   const addToList = submitContact => {
     const nameId = nanoid();
     const newContact = {
@@ -24,35 +22,18 @@ function App() {
     setContacts(contacts => [newContact, ...contacts]);
   };
 
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value.toLowerCase());
-  };
-
-  const getVisibleContacts = () => {
-    const normalizeFilter = filter.toLowerCase();
-    return Object.values(contacts).filter(contact => 
-      contact.name.toLowerCase().includes(normalizeFilter));
-  };
-
-  const deleteContacts = userId => {
-    setContacts(prevState => prevState.filter(user => user.id !== userId));
-  };
-
-  
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
- 
+
   return (
     <Container>
       <Section title="Phonebook">
         <ContactForm onSubmits={addToList} contacts={contacts} />
         <Header title="Contacts" />
-        <Filter value={filter} onChange={changeFilter} />
+        <Filter />
         <List>
-          <ContactList 
-          contacts={getVisibleContacts()} 
-          onDeleteContacts={deleteContacts} />
+          <ContactList />
         </List>
       </Section>
     </Container>
