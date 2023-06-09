@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux'
-import {addContact} from '../../store/contactsSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../store/contactsSlice';
 import { getContacts } from '../../store/selector';
 import {
   AiOutlineUser,
@@ -10,11 +10,11 @@ import {
 } from 'react-icons/ai';
 import { Form, Input, Label, Button } from './ContactForm.styled';
 
-function ContactForm({ contactss, onSubmits }) {
+function ContactForm({ contact, onSubmits }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-	const contacts = useSelector(getContacts)
-  const dispatch = useDispatch()
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     switch (e.currentTarget.name) {
@@ -33,7 +33,7 @@ function ContactForm({ contactss, onSubmits }) {
     e.preventDefault();
     contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} is already in contacts`)
-      : dispatch(addContact({ name, number }));    
+      : dispatch(addContact({ name, number }));
     reset();
   };
 
