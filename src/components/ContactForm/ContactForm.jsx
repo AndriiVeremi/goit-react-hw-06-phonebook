@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../store/contactsSlice';
-import { getContacts } from '../../store/selector';
+import { addContact } from '../../redax/contactsSlice';
+import { getContacts } from '../../redax/selector';
 import {
   AiOutlineUser,
   AiOutlineUserAdd,
