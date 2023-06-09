@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redax/contactsSlice';
-import { getFilteredContacts } from '../../redax/selector';
+import { deleteContact } from '../../redux/contactsSlice';
+import { getFilteredContacts } from '../../redux/selector';
 
 import { Item, Name, Text, Button } from './ContactList.styled';
 
